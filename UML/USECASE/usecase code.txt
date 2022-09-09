@@ -1,0 +1,83 @@
+@startuml
+left to right direction
+actor "Читатель"      as reader
+actor "Писатель"      as writer
+actor "Модератор"     as moderator
+actor "Администратор" as admintistrator
+
+usecase "Читать новости"          as read
+usecase "Поиск новостей"          as search
+usecase "Просмотр ленты новостей" as lookLine
+usecase "Комментирование"         as commenting
+usecase "Оценка новости"          as ratingNews
+usecase "Оценка комментария"      as ratingComment
+usecase "Оценка чужой новости"    as ratingOtherNews
+usecase "Создавать новость"       as createNews
+usecase "Редактировать новость"   as editNews
+usecase "Обновлять новость"       as updateNews
+usecase "Жалоба на комментарий"   as reportComment
+usecase "Рассмотрение жалобы"     as processingOfReport
+usecase "Перманентная блокировка" as permanentBan
+usecase "Временная блокировка"    as ban
+usecase "Временный запрет написания коммеентариев" as mute
+usecase "Удаление новостей"       as deleteNews
+usecase "Переключение между ролями" as swapRole
+usecase "Выдача привилегий"       as grantingPrivileges
+usecase "Удаление пользователей"  as deleteUser
+usecase "Жалоба на работу сайта"  as softwareReport
+
+reader -up- read
+reader -up- reportComment
+reader -up- search
+reader -up- lookLine
+reader -up- commenting
+reader -up- ratingNews
+reader -up- ratingComment
+reader -up- softwareReport
+
+writer -up- read
+writer -up- reportComment
+writer -up- createNews
+writer -up- editNews
+writer -up- updateNews
+writer -up- search
+writer -up- lookLine
+writer -up- commenting
+writer -up- ratingOtherNews
+writer -up- ratingComment
+writer -up- softwareReport
+
+moderator -down- read
+moderator -down- reportComment
+moderator -down- createNews
+moderator -down- editNews
+moderator -down- updateNews
+moderator -down- search
+moderator -down- lookLine
+moderator -down- commenting
+moderator -down- processingOfReport
+moderator -down- permanentBan
+moderator -down- ban
+moderator -down- mute
+moderator -down- deleteNews
+moderator -down- swapRole
+moderator -down- softwareReport
+
+admintistrator -down- read
+admintistrator -down- reportComment
+admintistrator -down- createNews
+admintistrator -down- editNews
+admintistrator -down- updateNews
+admintistrator -down- search
+admintistrator -down- lookLine
+admintistrator -down- commenting
+admintistrator -down- processingOfReport
+admintistrator -down- permanentBan
+admintistrator -down- ban
+admintistrator -down- mute
+admintistrator -down- deleteNews
+admintistrator -down- swapRole
+admintistrator -down- grantingPrivileges
+admintistrator -down- deleteUser
+admintistrator -down- softwareReport
+@enduml

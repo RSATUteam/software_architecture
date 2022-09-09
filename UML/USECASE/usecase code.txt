@@ -4,6 +4,7 @@ actor "Читатель"      as reader
 actor "Писатель"      as writer
 actor "Модератор"     as moderator
 actor "Администратор" as admintistrator
+actor "Гость" as guest
 
 usecase "Читать новости"          as read
 usecase "Поиск новостей"          as search
@@ -24,7 +25,21 @@ usecase "Удаление новостей"       as deleteNews
 usecase "Переключение между ролями" as swapRole
 usecase "Выдача привилегий"       as grantingPrivileges
 usecase "Удаление пользователей"  as deleteUser
-usecase "Жалоба на работу сайта"  as softwareReport
+usecase "Жалоба на работу сайта"  as softwareReport0
+usecase "Жалоба на работу сайта"  as softwareReport1
+usecase "Жалоба на работу сайта"  as softwareReport2
+usecase "Жалоба на работу сайта"  as softwareReport3
+usecase "Жалоба на работу сайта"  as softwareReport4
+
+guest --|> reader
+reader --|> writer
+writer --|> moderator
+moderator --|> admintistrator
+
+guest -up- read
+guest -up- search
+guest -up- lookLine
+guest -up- softwareReport0
 
 reader -up- read
 reader -up- reportComment
@@ -33,51 +48,23 @@ reader -up- lookLine
 reader -up- commenting
 reader -up- ratingNews
 reader -up- ratingComment
-reader -up- softwareReport
+reader -up- softwareReport1
 
-writer -up- read
-writer -up- reportComment
 writer -up- createNews
 writer -up- editNews
 writer -up- updateNews
-writer -up- search
-writer -up- lookLine
-writer -up- commenting
 writer -up- ratingOtherNews
-writer -up- ratingComment
-writer -up- softwareReport
+writer -up- softwareReport2
 
-moderator -down- read
-moderator -down- reportComment
-moderator -down- createNews
-moderator -down- editNews
-moderator -down- updateNews
-moderator -down- search
-moderator -down- lookLine
-moderator -down- commenting
 moderator -down- processingOfReport
 moderator -down- permanentBan
 moderator -down- ban
 moderator -down- mute
 moderator -down- deleteNews
 moderator -down- swapRole
-moderator -down- softwareReport
+moderator -down- softwareReport3
 
-admintistrator -down- read
-admintistrator -down- reportComment
-admintistrator -down- createNews
-admintistrator -down- editNews
-admintistrator -down- updateNews
-admintistrator -down- search
-admintistrator -down- lookLine
-admintistrator -down- commenting
-admintistrator -down- processingOfReport
-admintistrator -down- permanentBan
-admintistrator -down- ban
-admintistrator -down- mute
-admintistrator -down- deleteNews
-admintistrator -down- swapRole
 admintistrator -down- grantingPrivileges
 admintistrator -down- deleteUser
-admintistrator -down- softwareReport
+admintistrator -down- softwareReport4
 @enduml

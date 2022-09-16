@@ -10,7 +10,6 @@ class News{
 
 + long long getID()
 + bool equalID(long long id)
-
 + Author getAuthor()
 + List<Content> getContent()
 }
@@ -27,9 +26,6 @@ class StringContent{
 # string content
 + string getContent()
 }
-Content <|-- StringContent
-Content <|-- ImageContent
-News "1"*--"*" Content
 
 class Category{
 # long long id
@@ -38,7 +34,6 @@ class Category{
 
 + long long getID()
 + bool equalID(long long id)
-
 + string getTitle()
 + string getDescription()
 }
@@ -75,7 +70,6 @@ class Comment{
 
 + long long getID()
 + bool equalID(long long id)
-
 + string getComment()
 + reader getReader()
 + Rating getRating()
@@ -125,12 +119,14 @@ class Reader{
 # List<Comment, News> commentedNews
 # List<Comment, Author> commentedAuthors
 
-/'
-getRated...
-getRatedUp...
-getCommented...
-'/
-
++ List<News> getRatedNews()
++ List<Comment> getRatedComments()
++ List<Author> getRatedAuthors()
++ List<News> getRatedUpNews(int rate)
++ List<Comment> getRatedUpComments(int rate)
++ List<Author> getRatedUpAuthors(int rate)
++ List<News> getCommentedNews()
++ List<Author> getCommentedAuthors()
 + bool equalPassword(string password)
 + bool equalLogin(string login)
 + bool changePassword(string oldPassword, string newPassword)
@@ -145,7 +141,9 @@ getCommented...
 }
 class Author{
 # Rating rating
+# List<News> writedNews
 + Rating getRating()
++ List<News> getWritedNews()
 }
 class Moderator{
 
@@ -157,4 +155,28 @@ Guest <|-- Reader
 Reader <|-- Author
 Author <|-- Moderator
 Moderator <|-- Administrator
+
+Content <|-- StringContent
+Content <|-- ImageContent
+
+News "1"*--"*" Content
+News "1"--"*" Category
+News "*" o-- "1" Author
+News "1" *-- "*" Comment
+News "1" *-- "1" Rating
+
+Guest "*"--"*" News
+
+Comment "*" -- "*" Reader
+Comment "1" *-- "1" Rating
+
+Author "1" *-- "*" Comment
+Author "1" *-- "1" Rating
+
+Rate "1" -- "1" Reader
+
+Rating "*" *-- "1" Rate
+
+Report "*" *-- "1" Reports
+
 @enduml

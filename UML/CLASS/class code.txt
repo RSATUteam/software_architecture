@@ -95,7 +95,6 @@ class Guest{
 
 + long long getID()
 + bool equalID(long long id)
-
 + List<News> getReadedNews()
 + long long getID()
 + bool equalID(long long id)
@@ -167,7 +166,7 @@ News "1" *-- "1" Rating
 
 Guest "*"--"*" News
 
-Comment "*" -- "*" Reader
+Comment "*" -- "1" Reader
 Comment "1" *-- "1" Rating
 
 Author "1" *-- "*" Comment
@@ -178,5 +177,5 @@ Rate "1" -- "1" Reader
 Rating "*" *-- "1" Rate
 
 Report "*" *-- "1" Reports
-
+Report "*" -- "1" Reader
 @enduml

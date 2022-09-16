@@ -1,0 +1,106 @@
+@startuml
+class News{
+# long long id
+# Author author
+# List<string> content
+# List<image, int> imageContent
+# Date date
+# List<Category> categorys
+# List<Comment> comments
+}
+
+class Category{
+# long long id
+# string title
+# string description
+}
+
+class Report{
+# int what
+# long long id
+}
+
+class Comment{
+# long long id
+# string comment
+# Reader commentator
+# Rating rating
++ string getComment()
++ reader getReader()
++ Rating getRating()
+}
+
+class Rate{
+# Reader reader
+# int rating
++ int getRate()
++ Reader getReader()
+}
+
+class Rating{
++ float getRating()
++ long getCount()
+# long count
+# List<Rate> rated
+}
+
+class Guest{
+# List<News> readedNews
+# long long id
++ List<News> getReadedNews()
++ long long getID()
++ bool equalID(long long id)
++ void setID(long long id)
++ void addReadedNews(News news)
++ bool inReadedNews(News news)
++ void eraseReadedNews(News news)
+}
+/'
+class User{
+}
+'/
+class Reader{
+# string login
+# string password
+# string UserName
+# string email
+# List<Rate, News> ratedNews
+# List<Rate, Comment> ratedComments
+# List<Rate, Author> ratedAuthors
+# List<Comment, News> commentedNews
+# List<Comment, Comment> commentedNews
+# List<Comment, Author> commentedNews
+
+/'
+getRated...
+getRatedUp...
+getCommented...
+'/
+
++ bool equalPassword(string password)
++ bool equalLogin(string login)
++ bool changePassword(string oldPassword, string newPassword)
++ bool setLogin(string Login)
++ void setPassword(string Password)
++ void setEmail(string email)
++ void setUsername(string Username)
++ string getLogin()
++ string getPassword()
++ string getEmail()
++ string getUsername()
+}
+class Author{
+# Rating rating
++ Rating getRating()
+}
+class Moderator{
+
+}
+class Administrator{
+
+}
+Guest <|-- Reader
+Reader <|-- Author
+Author <|-- Moderator
+Moderator <|-- Administrator
+@enduml

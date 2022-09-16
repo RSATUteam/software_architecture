@@ -41,10 +41,10 @@ class Category{
 class Report{
 # int what
 # long long toID
-# Reader from
+# Guest from
 + int getWhat()
 + long long getID()
-+ Rreader getReporting()
++ Guest getReporting()
 }
 
 static class Reports{
@@ -170,12 +170,12 @@ Comment "*" -- "1" Reader
 Comment "1" *-- "1" Rating
 
 Author "1" *-- "*" Comment
-Author "1" *-- "1" Rating
+Author "1" *-- "1" Guest
 
 Rate "1" -- "1" Reader
 
 Rating "*" *-- "1" Rate
 
 Report "*" *-- "1" Reports
-Report "*" -- "1" Reader
+Report "*" -- "1" Guest
 @enduml

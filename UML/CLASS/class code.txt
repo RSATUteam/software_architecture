@@ -7,6 +7,7 @@ class News{
 # Date date
 # List<Category> categorys
 # List<Comment> comments
+# Rating rating
 
 + long long getID()
 + bool equalID(long long id)
@@ -170,7 +171,7 @@ Comment "*" -- "1" Reader
 Comment "1" *-- "1" Rating
 
 Author "1" *-- "*" Comment
-Author "1" *-- "1" Guest
+Author "1" *-- "1" Rating
 
 Rate "1" -- "1" Reader
 

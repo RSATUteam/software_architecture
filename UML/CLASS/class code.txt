@@ -7,17 +7,64 @@ class News{
 # Date date
 # List<Category> categorys
 # List<Comment> comments
+
++ long long getID()
++ bool equalID(long long id)
+
++ Author getAuthor()
++ List<Content> getContent()
 }
+
+abstract class Content{
+}
+
+class ImageContent{
+# Image content
++ Image getContent()
+}
+
+class StringContent{
+# string content
++ string getContent()
+}
+Content <|-- StringContent
+Content <|-- ImageContent
+News "1"*--"*" Content
 
 class Category{
 # long long id
 # string title
 # string description
+
++ long long getID()
++ bool equalID(long long id)
+
++ string getTitle()
++ string getDescription()
 }
 
 class Report{
 # int what
-# long long id
+# long long toID
+# Reader from
++ int getWhat()
++ long long getID()
++ Rreader getReporting()
+}
+
+static class Reports{
+# List<Report> reports
+# List<Report> specialReports
++ void addReport(Report report)
++ Report getReport()
++ int getCountReport()
++ bool noReport()
++ void addSpecialReport()
++ Report getSpecialReport()
++ int getCountSpecialReport()
++ bool noSpecialReport()
++ void addReport(bool isSpecial,Report report)
++ void addUncnownReport(Report report)
 }
 
 class Comment{
@@ -25,6 +72,10 @@ class Comment{
 # string comment
 # Reader commentator
 # Rating rating
+
++ long long getID()
++ bool equalID(long long id)
+
 + string getComment()
 + reader getReader()
 + Rating getRating()
@@ -32,8 +83,8 @@ class Comment{
 
 class Rate{
 # Reader reader
-# int rating
-+ int getRate()
+# byte rating
++ byte getRate()
 + Reader getReader()
 }
 
@@ -47,6 +98,10 @@ class Rating{
 class Guest{
 # List<News> readedNews
 # long long id
+
++ long long getID()
++ bool equalID(long long id)
+
 + List<News> getReadedNews()
 + long long getID()
 + bool equalID(long long id)
@@ -68,8 +123,7 @@ class Reader{
 # List<Rate, Comment> ratedComments
 # List<Rate, Author> ratedAuthors
 # List<Comment, News> commentedNews
-# List<Comment, Comment> commentedNews
-# List<Comment, Author> commentedNews
+# List<Comment, Author> commentedAuthors
 
 /'
 getRated...

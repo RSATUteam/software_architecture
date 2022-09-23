@@ -1,156 +1,182 @@
 @startuml
-class News{
-# long long id
-# Author author
-# List<string> content
-# List<image, int> imageContent
-# Date date
-# List<Category> categorys
-# List<Comment> comments
-# Rating rating
 
-+ long long getID()
-+ bool equalID(long long id)
-+ Author getAuthor()
-+ List<Content> getContent()
+class News{
+  # long long id
+  # Author author
+  # List<string> content
+  # List<image, int> imageContent
+  # Date date
+  # List<Category> categorys
+  # List<Comment> comments
+  # Rating rating
+  
+  + long long getID()
+  + bool equalID(long long id)
+  + Author getAuthor()
+  + List<Content> getContent()
 }
+
+
 
 abstract class Content{
 }
 
 class ImageContent{
-# Image content
-+ Image getContent()
+  # Image content
+  + Image getContent()
 }
 
 class StringContent{
-# string content
-+ string getContent()
+  # string content
+  + string getContent()
 }
 
 class Category{
-# long long id
-# string title
-# string description
-
-+ long long getID()
-+ bool equalID(long long id)
-+ string getTitle()
-+ string getDescription()
+  # long long id
+  # string title
+  # string description
+  
+  + long long getID()
+  + bool equalID(long long id)
+  + string getTitle()
+  + string getDescription()
 }
+
+
 
 class Report{
-# int what
-# long long toID
-# Guest from
-+ int getWhat()
-+ long long getID()
-+ Guest getReporting()
+  # int what
+  # long long toID
+  # Guest from
+  + int getWhat()
+  + long long getID()
+  + Guest getReporting()
 }
+
+
 
 static class Reports{
-# List<Report> reports
-# List<Report> specialReports
-+ void addReport(Report report)
-+ Report getReport()
-+ int getCountReport()
-+ bool noReport()
-+ void addSpecialReport()
-+ Report getSpecialReport()
-+ int getCountSpecialReport()
-+ bool noSpecialReport()
-+ void addReport(bool isSpecial,Report report)
-+ void addUncnownReport(Report report)
+  # List<Report> reports
+  # List<Report> specialReports
+  + void addReport(Report report)
+  + Report getReport()
+  + int getCountReport()
+  + bool noReport()
+  + void addSpecialReport()
+  + Report getSpecialReport()
+  + int getCountSpecialReport()
+  + bool noSpecialReport()
+  + void addReport(bool isSpecial,Report report)
+  + void addUncnownReport(Report report)
 }
+
+
 
 class Comment{
-# long long id
-# string comment
-# Reader commentator
-# Rating rating
-
-+ long long getID()
-+ bool equalID(long long id)
-+ string getComment()
-+ reader getReader()
-+ Rating getRating()
+  # long long id
+  # string comment
+  # Reader commentator
+  # Rating rating
+  
+  + long long getID()
+  + bool equalID(long long id)
+  + string getComment()
+  + reader getReader()
+  + Rating getRating()
 }
+
+
 
 class Rate{
-# Reader reader
-# byte rating
-+ byte getRate()
-+ Reader getReader()
+  # Reader reader
+  # byte rating
+  + byte getRate()
+  + Reader getReader()
 }
+
+
 
 class Rating{
-+ float getRating()
-+ long getCount()
-# long count
-# List<Rate> rated
+  + float getRating()
+  + long getCount()
+  # long count
+  # List<Rate> rated
 }
+
+
 
 class Guest{
-# List<News> readedNews
-# long long id
+  # List<News> readedNews
+  # long long id
+  
+  + long long getID()
+  + bool equalID(long long id)
+  + List<News> getReadedNews()
+  + long long getID()
+  + bool equalID(long long id)
+  + void setID(long long id)
+  + void addReadedNews(News news)
+  + bool inReadedNews(News news)
+  + void eraseReadedNews(News news)
+}
 
-+ long long getID()
-+ bool equalID(long long id)
-+ List<News> getReadedNews()
-+ long long getID()
-+ bool equalID(long long id)
-+ void setID(long long id)
-+ void addReadedNews(News news)
-+ bool inReadedNews(News news)
-+ void eraseReadedNews(News news)
-}
-/'
-class User{
-}
-'/
+
+
 class Reader{
-# string login
-# string password
-# string UserName
-# string email
-# List<Rate, News> ratedNews
-# List<Rate, Comment> ratedComments
-# List<Rate, Author> ratedAuthors
-# List<Comment, News> commentedNews
-# List<Comment, Author> commentedAuthors
+  # string login
+  # string password
+  # string UserName
+  # string email
+  # List<Rate, News> ratedNews
+  # List<Rate, Comment> ratedComments
+  # List<Rate, Author> ratedAuthors
+  # List<Comment, News> commentedNews
+  # List<Comment, Author> commentedAuthors
+  
+  + List<News> getRatedNews()
+  + List<Comment> getRatedComments()
+  + List<Author> getRatedAuthors()
+  + List<News> getRatedUpNews(int rate)
+  + List<Comment> getRatedUpComments(int rate)
+  + List<Author> getRatedUpAuthors(int rate)
+  + List<News> getCommentedNews()
+  + List<Author> getCommentedAuthors()
+  + bool equalPassword(string password)
+  + bool equalLogin(string login)
+  + bool changePassword(string oldPassword, string newPassword)
+  + bool setLogin(string Login)
+  + void setPassword(string Password)
+  + void setEmail(string email)
+  + void setUsername(string Username)
+  + string getLogin()
+  + string getPassword()
+  + string getEmail()
+  + string getUsername()
+}
 
-+ List<News> getRatedNews()
-+ List<Comment> getRatedComments()
-+ List<Author> getRatedAuthors()
-+ List<News> getRatedUpNews(int rate)
-+ List<Comment> getRatedUpComments(int rate)
-+ List<Author> getRatedUpAuthors(int rate)
-+ List<News> getCommentedNews()
-+ List<Author> getCommentedAuthors()
-+ bool equalPassword(string password)
-+ bool equalLogin(string login)
-+ bool changePassword(string oldPassword, string newPassword)
-+ bool setLogin(string Login)
-+ void setPassword(string Password)
-+ void setEmail(string email)
-+ void setUsername(string Username)
-+ string getLogin()
-+ string getPassword()
-+ string getEmail()
-+ string getUsername()
-}
+
+
 class Author{
-# Rating rating
-# List<News> writedNews
-+ Rating getRating()
-+ List<News> getWritedNews()
+  # Rating rating
+  # List<News> writedNews
+  + Rating getRating()
+  + List<News> getWritedNews()
 }
+
+
+
 class Moderator{
 
 }
+
+
+
 class Administrator{
 
 }
+
+
+
 Guest <|-- Reader
 Reader <|-- Author
 Author <|-- Moderator
@@ -179,4 +205,5 @@ Rating "*" *-- "1" Rate
 
 Report "*" *-- "1" Reports
 Report "*" -- "1" Guest
+
 @enduml

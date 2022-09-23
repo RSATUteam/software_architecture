@@ -1,0 +1,88 @@
+@startuml
+
+News "1" *-- "*" Comment
+News "1" *-- "1" Rating
+
+Guest "*"--"*" News
+
+Comment "*" -- "1" Reader
+
+Author "1" *-- "*" Comment
+Author "1" *-- "1" Rating
+
+Rate "1" -- "1" Reader
+
+Report "*" -- "1" Guest
+
+
+
+component AccessRights {
+  component guest
+  component reader
+  component author
+  component moderator
+  component administrator
+  port ar1
+  port ar2
+  port ar3
+
+  guest <|-left- reader
+  reader <|-down- author
+  author <|-right- moderator
+  moderator <|-up- administrator
+
+  guest - ar1
+  author - ar2
+}
+
+database Content {
+  component imageContent
+  component stringContent
+  component content
+  component news
+  component category
+  port c1
+  port c2
+
+  news "1"*--"*" content
+  news "1"--"*" category
+  content <|-- stringContent
+  content <|-- imageContent
+  c1 -> news
+  c2 <- news
+}
+
+database RatesAndComments {
+  component rating
+  component rate
+  component comment
+  port rac1
+  port rac2
+  port rac3
+
+  rating "*" *-- "1" rate
+  comment "1" *-- "1" rating
+  rac1 - comment
+  rac2 - rating
+  rac3 - rate
+}
+
+database Moderation {
+  component reports <<list>>
+  component report
+  port m1
+
+  report "*" *-- "1" reports
+  m1 - report
+}
+
+
+
+
+ar1 -0)- m1
+ar1 -0)- c1
+ar2 -0)- c1
+c2 -0)- rac1
+c2 -0)- rac2
+
+@enduml

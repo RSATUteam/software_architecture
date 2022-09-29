@@ -21,15 +21,23 @@ class News{
 abstract class Content{
 }
 
+
+
 class ImageContent{
   # Image content
+  
   + Image getContent()
 }
 
+
+
 class StringContent{
   # string content
+  
   + string getContent()
 }
+
+
 
 class Category{
   # long long id
@@ -45,12 +53,20 @@ class Category{
 
 
 class Report{
-  # int what
-  # long long toID
-  # Guest from
-  + int getWhat()
-  + long long getID()
-  + Guest getReporting()
+  # int id;
+  # int kindOfObject
+  # long long objectId
+  # Guest userId
+  # Moderator moderatorId
+  # int state
+  
+  + int getId();
+  + int getKindOfObject()
+  + long long getObjectId()
+  + Guest getUserId()
+  + Moderator getModeratorId()
+  + int getState()
+  + void changeModeratorId(Moderator moderId)
 }
 
 
@@ -58,6 +74,7 @@ class Report{
 static class Reports{
   # List<Report> reports
   # List<Report> specialReports
+  
   + void addReport(Report report)
   + Report getReport()
   + int getCountReport()
@@ -90,6 +107,7 @@ class Comment{
 class Rate{
   # Reader reader
   # byte rating
+  
   + byte getRate()
   + Reader getReader()
 }
@@ -97,10 +115,11 @@ class Rate{
 
 
 class Rating{
-  + float getRating()
-  + long getCount()
   # long count
   # List<Rate> rated
+  
+  + float getRating()
+  + long getCount()
 }
 
 
@@ -159,6 +178,7 @@ class Reader{
 class Author{
   # Rating rating
   # List<News> writedNews
+  
   + Rating getRating()
   + List<News> getWritedNews()
 }
@@ -166,13 +186,17 @@ class Author{
 
 
 class Moderator{
-
+  # List<Report> closedReports
+  # List<Report> activeReports
+  
+  + bool startHandlingReport(int id)
+  + void changeReportState(int id, int newState)
 }
 
 
 
 class Administrator{
-
+  + void givePermission(Reader userId, int permissionLevel)
 }
 
 

@@ -1,20 +1,5 @@
 @startuml
 
-News "1" *-- "*" Comment
-News "1" *-- "1" Rating
-
-Guest "*"--"*" News
-
-Comment "*" -- "1" Reader
-
-Author "1" *-- "*" Comment
-Author "1" *-- "1" Rating
-
-Rate "1" -- "1" Reader
-
-Report "*" -- "1" Guest
-
-
 
 component AccessRights {
   component guest
@@ -22,17 +7,26 @@ component AccessRights {
   component author
   component moderator
   component administrator
-  port ar1
-  port ar2
-  port ar3
+  port a1
+  port a2
+  port a3
+  port a4
+  port a5
+  port a6
+  port a7
 
+  moderator <|-left- administrator
+  author <|-down- moderator
+  reader <|-left- author
   guest <|-left- reader
-  reader <|-down- author
-  author <|-right- moderator
-  moderator <|-up- administrator
 
-  guest - ar1
-  author - ar2
+  guest  "*"  - a1
+  author "1"  - a2
+  guest  "1"  - a3
+  reader "1"  - a4
+  reader "1"  - a5
+  author "1" *- a6
+  author "1" *- a7
 }
 
 database Content {
@@ -43,28 +37,40 @@ database Content {
   component category
   port c1
   port c2
+  port c3
+  port c4
 
   news "1"*--"*" content
   news "1"--"*" category
   content <|-- stringContent
   content <|-- imageContent
-  c1 -> news
-  c2 <- news
+
+  news "1" *- c1
+  news "1" *- c2
+  news "*"  - c3
+  news "*" o- c4
 }
 
 database RatesAndComments {
   component rating
   component rate
   component comment
-  port rac1
-  port rac2
-  port rac3
+  port r1
+  port r2
+  port r3
+  port r4
+  port r5
+  port r6
 
-  rating "*" *-- "1" rate
-  comment "1" *-- "1" rating
-  rac1 - comment
-  rac2 - rating
-  rac3 - rate
+  rating "*" *-right- "1" rate
+  comment "1" *-right- "1" rating
+
+  comment "*" - r1
+  rating  "1" - r2
+  comment "*" - r3
+  rate    "1" - r4
+  comment "*" - r5
+  rating  "1" - r6
 }
 
 database Moderation {
@@ -73,16 +79,21 @@ database Moderation {
   port m1
 
   report "*" *-- "1" reports
-  m1 - report
+
+  report "*" - m1
 }
 
 
 
+r1 -- c1
+r2 -- c2
+a1 -- c3
+a2 -- c4
+m1 -- a3
+r3 -- a4
+r4 -- a5
+r5 -- a6
+r6 -- a7
 
-ar1 -0)- m1
-ar1 -0)- c1
-ar2 -0)- c1
-c2 -0)- rac1
-c2 -0)- rac2
 
 @enduml

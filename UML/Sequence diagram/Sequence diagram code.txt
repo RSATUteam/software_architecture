@@ -3,75 +3,75 @@
 actor Moderator as "Модератор"
 actor Author as "Автор"
 actor Reader as "Читатель"
-collections News as "Новости"
-database Content as "Новостной контент"
+participant Form as "Форма"
+database News as "Новость"
 
 group Добавление новости
-  Author -> News : "Создать новость"
+  Author --> Form : "Создать новость"
+  activate Form
+  Form --> News : <<create>>
   activate News
-  News -> Content : <<create>>
-  activate Content
-  News -> Author : "Отправляет форму"
+  Form --> Author : "Отправляет форму"
   activate Author
-  Author -> News : "Добавляет заголовок"
-  activate News
-  News -> Content : <<create title>>
-  Author -> News : "Добавляет текст"
-  News -> Content : <<add text>>
-  Author -> News : "Добавляет материалы"
-  News -> Content : <<add mediacontent>>
-  Author -> News : <<завершает>>
+  Author ->> Form : "Добавляет заголовок"
+  activate Form
+  Form ->> News : <<create title>>
+  Author ->> Form : "Добавляет текст"
+  Form ->> News : <<add text>>
+  Author ->> Form : "Добавляет материалы"
+  Form ->> News : <<add mediaNews>>
+  Author -> Form : <<завершает>>
+  destroy Form
+  Form -> News : <<request>>
+  News --> Form : <<return Form instance>>
   deactivate News
-  News -> Content : <<request>>
-  Content -> News : <<return news instance>>
-  deactivate Content
-  News -> Author : <<показывает готовую новость>>
+  Form --> Author : <<показывает готовую новость>>
   deactivate Author
-  deactivate News
+  deactivate Form
 end
 
 group Редактирование новости
   Moderator -> Author : "Исправьте новость"
   activate Author
-  Author -> News : "Запрашивает редактирование новости"
+  Author -> Form : "Запрашивает редактирование новости"
+  activate Form
+  Form -> News : <<request>>
   activate News
-  News -> Content : <<request>>
-  activate Content
-  Content -> News : <<return news instance>>
-  deactivate Content
-  News -> Author : "Отправляет форму"
+  News --> Form : <<return Form instance>>
+  deactivate News
+  Form --> Author : "Отправляет форму"
   activate Author
-  Author -> News : "Обновляет заголовок"
+  Author ->> Form : "Обновляет заголовок"
+  activate Form
+  Form ->> News : <<edit title>>
   activate News
-  News -> Content : <<edit title>>
-  activate Content
-  Author -> News : "Обновляет текст"
-  News -> Content : <<edit text>>
-  Author -> News : "Обновляет материалы"
-  News -> Content : <<edit mediacontent>>
-  deactivate Content
-  Author -> News : <<завершить редактирование>>
+  Author ->> Form : "Обновляет текст"
+  Form ->> News : <<edit text>>
+  Author ->> Form : "Обновляет материалы"
+  Form ->> News : <<edit mediaNews>>
   deactivate News
-  News -> Content : <<request>>
-  activate Content
-  Content -> News : <<return news instance>>
-  deactivate Content
-  News -> Author : <<показывает готовую новость>>
+  Author -> Form : <<завершить редактирование>>
+  destroy Form
+  Form -> News : <<request>>
+  activate News
+  News --> Form : <<return Form instance>>
   deactivate News
+  Form --> Author : <<показывает готовую новость>>
+  deactivate Form
   deactivate Author
   Author -> Moderator : "Новость исправлена"
   deactivate Author
 end
 
 group Чтение новости
-  Reader -> News : "Прочесть новость"
+  Reader -> Form : "Прочесть новость"
+  activate Form
+  Form -> News : <<request>>
   activate News
-  News -> Content : <<request>>
-  activate Content
-  Content -> News : <<return news instance>>
-  deactivate Content
-  News -> Reader : <<Показывает готовую новость>>
+  News --> Form : <<return Form instance>>
   deactivate News
+  Form --> Reader : <<Показывает готовую новость>>
+  deactivate Form
 end
 
 group Оценка

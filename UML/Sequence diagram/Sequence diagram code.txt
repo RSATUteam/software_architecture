@@ -1,0 +1,98 @@
+@startuml
+
+actor Moderator as "Модератор"
+actor Author as "Автор"
+actor Reader as "Читатель"
+collections News as "Новости"
+database Content as "Новостной контент"
+
+group Добавление новости
+  Author -> News : "Создать новость"
+  activate News
+  News -> Content : <<create>>
+  activate Content
+  News -> Author : "Отправляет форму"
+  activate Author
+  Author -> News : "Добавляет заголовок"
+  activate News
+  News -> Content : <<create title>>
+  Author -> News : "Добавляет текст"
+  News -> Content : <<add text>>
+  Author -> News : "Добавляет материалы"
+  News -> Content : <<add mediacontent>>
+  Author -> News : <<завершает>>
+  deactivate News
+  News -> Content : <<request>>
+  Content -> News : <<return news instance>>
+  deactivate Content
+  News -> Author : <<показывает готовую новость>>
+  deactivate Author
+  deactivate News
+end
+
+group Редактирование новости
+  Moderator -> Author : "Исправьте новость"
+  activate Author
+  Author -> News : "Запрашивает редактирование новости"
+  activate News
+  News -> Content : <<request>>
+  activate Content
+  Content -> News : <<return news instance>>
+  deactivate Content
+  News -> Author : "Отправляет форму"
+  activate Author
+  Author -> News : "Обновляет заголовок"
+  activate News
+  News -> Content : <<edit title>>
+  activate Content
+  Author -> News : "Обновляет текст"
+  News -> Content : <<edit text>>
+  Author -> News : "Обновляет материалы"
+  News -> Content : <<edit mediacontent>>
+  deactivate Content
+  Author -> News : <<завершить редактирование>>
+  deactivate News
+  News -> Content : <<request>>
+  activate Content
+  Content -> News : <<return news instance>>
+  deactivate Content
+  News -> Author : <<показывает готовую новость>>
+  deactivate News
+  deactivate Author
+  Author -> Moderator : "Новость исправлена"
+  deactivate Author
+end
+
+group Чтение новости
+  Reader -> News : "Прочесть новость"
+  activate News
+  News -> Content : <<request>>
+  activate Content
+  Content -> News : <<return news instance>>
+  deactivate Content
+  News -> Reader : <<Показывает готовую новость>>
+  deactivate News
+end
+
+group Оценка
+
+end
+note left
+  В процессе проработки...
+end note
+
+group Комментирование
+
+end
+note left
+  В процессе проработки...
+end note
+
+group Жалоба
+
+end
+note left
+  В процессе проработки...
+end note
+
+@enduml

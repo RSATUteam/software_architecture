@@ -1,6 +1,6 @@
 @startuml
 |user|      Пользователь
-|author|    Автор
+|author|    Aвтор
 |moderator| Модератор
 |admin|     Администратор
 |server|    Сервер

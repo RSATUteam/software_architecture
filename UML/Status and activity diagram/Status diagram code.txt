@@ -3,17 +3,37 @@
 hide empty description
 
 state state1 as "Создание новости"{
-  state userCrNewsReq as "Запрос на создание новости"
+  state userCrNewsReq    as "Запрос на создание новости"
   state createServerNews as "Создание новости на сервере"
-  state createFormNews as "Создание формы для новости"
+  state createFormNews   as "Создание формы для новости"
 
   [*] --> userCrNewsReq
   userCrNewsReq --> createServerNews : Достаточно прав
-  userCrNewsReq --> [*] : Недостаточно прав
+  userCrNewsReq --> [*]              : Недостаточно прав
   createServerNews --> createFormNews
-  createFormNews --> [*]: Успешное создание формы
-  createFormNews --> createFormNews: Ошибка при создании формы
+  createFormNews --> [*]             : Успешное создание формы
+  createFormNews --> createFormNews  : Ошибка при создании формы
 }
 
+state state2 as "Редактирование новости"{
+  state userMdfNewsReq     as "Запрос на редактирование новости"
+  state serverTransmitData as "Передача формы новости от сервера"
+  state userMdfFormNews    as "Редактирование формы для новости"
+  state uploadFormNews     as "Загрузка обновлённой формы для новости на сервер"
+  
+  [*] --> userMdfNewsReq
+  userMdfNewsReq --> serverTransmitData : Достаточно прав
+  userMdfNewsReq --> [*]                : Недостаточно прав
+  serverTransmitData --> userMdfFormNews
+  userMdfFormNews --> uploadFormNews    : Корректное изменение
+  userMdfFormNews --> userMdfFormNews   : Некорректное измменение
+  uploadFormNews --> [*]                : Обновление на сервере
+}
+
+
 [*]--> state1
+state1 --> state2 : Требуется редактирование
+state1 --> [*]
+state2 --> [*]
+
 @enduml

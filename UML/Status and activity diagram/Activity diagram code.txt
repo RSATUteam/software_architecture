@@ -1,0 +1,13 @@
+@startuml
+|user| Пользователь
+|author| Автор
+|moderator| Модератор
+|admin| Администратор
+|server| Сервер
+
+|user|
+start
+:Создание;
+|server|
+:Ты что?;
+@enduml

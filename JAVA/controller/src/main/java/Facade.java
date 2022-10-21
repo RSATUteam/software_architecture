@@ -1,46 +1,45 @@
-import controllers.Category;
-import controllers.News;
-import interfaces.INews;
+import controllers.CategoryController;
+import controllers.NewsController;
 
 import java.util.ArrayList;
 
 public class Facade {
-    News news;
-    Category category;
+    NewsController newsController;
+    CategoryController categoryController;
 
     ArrayList<Integer> getNewsList() {
-        return news.getNewsList();
+        return newsController.getNewsList();
     }
 
     Object getNews(Integer id) {
-        return news.getNews(id);
+        return newsController.getNews(id);
     }
 
     void addNews(Object newNews){
-        news.addNews(newNews);
+        newsController.addNews(newNews);
     }
 
     boolean updateNews(Integer id, Object newNews) {
-        return news.updateNews(id,newNews);
+        return newsController.updateNews(id,newNews);
     }
 
     boolean deleteNews(Integer id){
-        return news.deleteNews(id);
+        return newsController.deleteNews(id);
     }
 
     ArrayList<String> getCategories() {
-        return category.getCategories();
+        return categoryController.getCategories();
     }
 
     void addCategory(String name){
-        category.addCategory(name);
+        categoryController.addCategory(name);
     }
 
     boolean updateCategory(String name, String newName) {
-        return category.updateCategory(name, newName);
+        return categoryController.updateCategory(name, newName);
     }
 
     boolean deleteCategory(String name){
-        return category.deleteCategory(name);
+        return categoryController.deleteCategory(name);
     }
 }

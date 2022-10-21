@@ -1,12 +1,12 @@
 package controllers;
 
+import bo.CategoryBO;
 import interfaces.ICategories;
 
 import java.util.ArrayList;
 
-public class Category implements ICategories {
-    long id;
-    String name;
+public class CategoryController implements ICategories {
+    CategoryBO category;
 
     @Override
     public ArrayList<String> getCategories() {

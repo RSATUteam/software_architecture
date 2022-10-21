@@ -1,3 +1,5 @@
+package controllers;
+
 import interfaces.INews;
 import javafx.scene.image.Image;
 

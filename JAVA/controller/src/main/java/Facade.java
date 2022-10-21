@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Facade {
     News news;
     Category category;
+
     ArrayList<Integer> getNewsList() {
         return news.getNewsList();
     }
@@ -14,6 +15,7 @@ public class Facade {
     Object getNews(Integer id) {
         return news.getNews(id);
     }
+
     void addNews(Object newNews){
         news.addNews(newNews);
     }

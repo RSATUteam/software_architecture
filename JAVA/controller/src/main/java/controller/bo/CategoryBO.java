@@ -1,4 +1,4 @@
-package bo;
+package controller.bo;
 
 public class CategoryBO {
     long id;

@@ -1,11 +1,9 @@
-package controllers;
+package controller.controllers;
 
-import bo.NewsBO;
+import controller.bo.NewsBO;
 import interfaces.INews;
-import javafx.scene.image.Image;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class NewsController implements INews {
     NewsBO news;

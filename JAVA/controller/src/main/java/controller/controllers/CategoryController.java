@@ -1,6 +1,6 @@
-package controllers;
+package controller.controllers;
 
-import bo.CategoryBO;
+import controller.bo.CategoryBO;
 import interfaces.ICategories;
 
 import java.util.ArrayList;

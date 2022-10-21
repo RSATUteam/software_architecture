@@ -1,5 +1,5 @@
-import controllers.CategoryController;
-import controllers.NewsController;
+import controller.controllers.CategoryController;
+import controller.controllers.NewsController;
 
 import java.util.ArrayList;
 

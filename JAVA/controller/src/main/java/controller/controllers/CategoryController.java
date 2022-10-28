@@ -19,7 +19,7 @@ public class CategoryController implements ICategories {
     }
 
     @Override
-    public CategoryBO getCategory(int id) {
+    public CategoryBO getCategory(long id) {
         return null;
     }
 

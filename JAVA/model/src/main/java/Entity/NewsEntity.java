@@ -7,10 +7,26 @@ import java.util.Date;
 
 public class NewsEntity {
     long id;
-    ArrayList<Integer> categoryBO;
+    ArrayList<Long> categoryEntity;
     String Title;
-    ArrayList<controller.bo.content.Content> Content;
+    ArrayList<Content> Content;
     Date Create_date;
+
+    NewsEntity(long id) {
+        setId(id);
+
+        ArrayList<Long> bdCategories = new ArrayList<>(); // обращение к БД за списком категорий
+        setCategoryEntity(bdCategories);
+
+        String Title = "dummy"; // обращение к БД за заголовком новости
+        setTitle(Title);
+
+        ArrayList<Content> Content = new ArrayList<>(); // обращение к БД за наполнением новости
+        setContent(Content);
+
+        Date Create_date = new Date(); // обращение у БД за датой создания новости
+        setCreate_date(Create_date);
+    }
 
     public long getId() {
         return id;
@@ -20,12 +36,12 @@ public class NewsEntity {
         this.id = id;
     }
 
-    public ArrayList<Integer> getCategoryBO() {
-        return categoryBO;
+    public ArrayList<Long> getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setCategoryBO(ArrayList<Integer> categoryBO) {
-        this.categoryBO = categoryBO;
+    public void setCategoryEntity(ArrayList<Long> categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     public String getTitle() {

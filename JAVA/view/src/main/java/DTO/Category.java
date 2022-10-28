@@ -17,7 +17,7 @@ public class Category {
     public void setCategoryBO(CategoryBO categoryBO) {
         this.categoryBO = categoryBO;
     }
-    public void setCategoryBO(int categoryBOID) {
+    public void setCategoryBO(Long categoryBOID) {
         this.categoryBO = controller.getCategory(categoryBOID);
     }
 }

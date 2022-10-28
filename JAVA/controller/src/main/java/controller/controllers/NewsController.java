@@ -20,7 +20,6 @@ public class NewsController implements INews {
 
     @Override
     public void addNews(Object news) {
-
     }
 
     @Override

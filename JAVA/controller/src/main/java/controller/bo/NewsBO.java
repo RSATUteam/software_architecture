@@ -9,7 +9,7 @@ public class NewsBO {
     long id;
     ArrayList<CategoryBO> categoryBO;
     String Title;
-    ArrayList<Content> Content;
+    ArrayList<controller.bo.content.Content> Content;
     Date Create_date;
 
     public String getTitle() {

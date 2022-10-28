@@ -2,7 +2,7 @@ package controller.bo.content;
 
 import javafx.scene.image.Image;
 
-public class ImageContent extends Content{
+public class ImageContent extends Content {
     Image content;
 
     @Override

@@ -1,6 +1,6 @@
 package controller.bo.content;
 
-public class TextContent extends Content{
+public class TextContent extends Content {
     String content;
 
     @Override

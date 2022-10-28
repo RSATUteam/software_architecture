@@ -6,7 +6,8 @@ import controller.controllers.NewsController;
 public class News {
     NewsBO news;
     NewsController controller;
-    News(int id){
+
+    News(int id) {
         setNews(id);
     }
 

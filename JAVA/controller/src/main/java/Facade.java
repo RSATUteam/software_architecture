@@ -15,15 +15,15 @@ public class Facade {
         return newsController.getNews(id);
     }
 
-    void addNews(Object newNews){
+    void addNews(Object newNews) {
         newsController.addNews(newNews);
     }
 
     boolean updateNews(Integer id, Object newNews) {
-        return newsController.updateNews(id,newNews);
+        return newsController.updateNews(id, newNews);
     }
 
-    boolean deleteNews(Integer id){
+    boolean deleteNews(Integer id) {
         return newsController.deleteNews(id);
     }
 
@@ -31,7 +31,7 @@ public class Facade {
         return categoryController.getCategories();
     }
 
-    void addCategory(String name){
+    void addCategory(String name) {
         categoryController.addCategory(name);
     }
 
@@ -39,7 +39,7 @@ public class Facade {
         return categoryController.updateCategory(name, newName);
     }
 
-    boolean deleteCategory(String name){
+    boolean deleteCategory(String name) {
         return categoryController.deleteCategory(name);
     }
 }

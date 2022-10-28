@@ -1,5 +1,7 @@
 package controller.controllers;
 
+import Entity.NewsEntity;
+import controller.bo.CategoryBO;
 import controller.bo.NewsBO;
 import interfaces.INews;
 
@@ -15,7 +17,22 @@ public class NewsController implements INews {
 
     @Override
     public Object getNews(Integer id) {
-        return null;
+        NewsEntity newsEntity = new NewsEntity(id); // либо притягиваем из кэша, либо пинаем штуку, которая грузит в кэш
+        news.setId(newsEntity.getId());
+
+        // Через контроллер категорий получаем оные по id из ArrayList в newsEntity
+        CategoryController CatContr = new CategoryController();
+        ArrayList<CategoryBO> categoryBO = new ArrayList<>();
+        for (Long categ : newsEntity.getCategoryEntity()) {
+            categoryBO.add(CatContr.getCategory(categ));
+        }
+        news.setCategoryBO(categoryBO);
+
+        news.setTitle(newsEntity.getTitle());
+        news.setContent(newsEntity.getContent());
+        news.setCreate_date(newsEntity.getCreate_date());
+
+        return news;
     }
 
     @Override

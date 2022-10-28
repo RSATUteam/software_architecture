@@ -12,7 +12,7 @@ public class NewsEntity {
     ArrayList<Content> Content;
     Date Create_date;
 
-    NewsEntity(long id) {
+    public NewsEntity(long id) {
         setId(id);
 
         ArrayList<Long> bdCategories = new ArrayList<>(); // обращение к БД за списком категорий

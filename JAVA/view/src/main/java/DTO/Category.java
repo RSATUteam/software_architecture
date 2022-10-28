@@ -6,7 +6,7 @@ import controller.controllers.CategoryController;
 public class Category {
     CategoryBO categoryBO;
     CategoryController controller;
-    Category(int id){
+    Category(Long id){
         setCategoryBO(id);
     }
 

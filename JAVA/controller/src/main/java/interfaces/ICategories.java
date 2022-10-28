@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface ICategories {
     ArrayList<String> getCategories();
+    ArrayList<Long> getCategoriesId();
     CategoryBO getCategory(int id);
     void addCategory(String name);
     boolean updateCategory(String name, String newName);

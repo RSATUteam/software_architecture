@@ -14,6 +14,11 @@ public class CategoryController implements ICategories {
     }
 
     @Override
+    public ArrayList<Long> getCategoriesId() {
+        return null;
+    }
+
+    @Override
     public CategoryBO getCategory(int id) {
         return null;
     }

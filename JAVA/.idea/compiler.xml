@@ -11,5 +11,8 @@
         <module name="view" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Model" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

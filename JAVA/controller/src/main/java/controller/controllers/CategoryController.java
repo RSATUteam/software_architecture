@@ -1,5 +1,6 @@
 package controller.controllers;
 
+import Entity.CategoryEntity;
 import controller.bo.CategoryBO;
 import interfaces.ICategories;
 
@@ -20,7 +21,13 @@ public class CategoryController implements ICategories {
 
     @Override
     public CategoryBO getCategory(long id) {
-        return null;
+        CategoryEntity categoryEntity = new CategoryEntity(id); // либо притягиваем из кэша, либо пинаем штуку, которая грузит в кэш
+        category.setId(categoryEntity.getId());
+
+        category.setName(categoryEntity.getName());
+        category.setDescription((categoryEntity.getDescription()));
+
+        return category;
     }
 
     @Override

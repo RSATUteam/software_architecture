@@ -1,9 +1,19 @@
 package Entity;
 
-public class CategoriesEntity {
+public class CategoryEntity {
     long id;
     String name;
     String description;
+
+    public CategoryEntity(long id) {
+        setId(id);
+
+        String name = "dummy"; // обращение к БД за названием категории
+        setName(name);
+
+        String description = "dummy"; // обращение к БД за описанием категории
+        setDescription(description);
+    }
 
     public long getId() {
         return id;

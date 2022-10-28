@@ -7,6 +7,9 @@ import java.util.ArrayList;
 public class AllCategories {
     ArrayList<CategoryBO> Categories;
     AllCategories(){
+        getAll();
+    }
+    void getAll(){
 
     }
 }

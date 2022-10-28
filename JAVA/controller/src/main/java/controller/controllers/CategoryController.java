@@ -14,6 +14,11 @@ public class CategoryController implements ICategories {
     }
 
     @Override
+    public CategoryBO getCategory(int id) {
+        return null;
+    }
+
+    @Override
     public void addCategory(String name) {
 
     }

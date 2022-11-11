@@ -13,5 +13,5 @@ public interface RestServiceGetNews {
 
     @GET
     @Path("echo")
-    JSONObject getJSON(@FormParam("jsonname") String jsonname);
+    JSONObject getJSON(@FormParam("request") String request_str);
 }

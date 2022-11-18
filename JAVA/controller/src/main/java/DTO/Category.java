@@ -7,7 +7,10 @@ public class Category {
     CategoryBO categoryBO;
     CategoryController controller;
 
-    Category(Long id) {
+    public Category(String id) {
+        setCategoryBO(Long.getLong(id));
+    }
+    public Category(Long id) {
         setCategoryBO(id);
     }
 

@@ -25,7 +25,7 @@ public class CategoryController implements ICategories {
         category.setId(categoryEntity.getId());
 
         category.setName(categoryEntity.getName());
-        category.setDescription((categoryEntity.getDescription()));
+        category.setDescription(categoryEntity.getDescription());
 
         return category;
     }

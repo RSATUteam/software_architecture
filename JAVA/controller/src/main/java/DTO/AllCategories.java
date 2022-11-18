@@ -10,7 +10,7 @@ public class AllCategories {
     ArrayList<CategoryBO> Categories;
     CategoryController controller;
 
-    AllCategories() {
+    public AllCategories() {
         setAllCategories();
     }
 

@@ -1,7 +1,5 @@
 package view.rest;
 
-import DTO.AllCategories;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,13 +13,13 @@ public class WriterAPI {
     @Path("/news/my")
     public Response getMyNews() {
 
-        return Response.ok().entity().build();
+        return Response.ok().entity(202).build();
     }
 
     @GET
     @Path("/category/my")
     public Response getMyCategories() {
 
-        return Response.ok().entity().build();
+        return Response.ok().entity(202).build();
     }
 }

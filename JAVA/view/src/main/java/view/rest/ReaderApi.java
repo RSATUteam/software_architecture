@@ -1,4 +1,4 @@
-package rest;
+package view.rest;
 
 import DTO.AllCategoriesDTO;
 import DTO.CategoryDTO;

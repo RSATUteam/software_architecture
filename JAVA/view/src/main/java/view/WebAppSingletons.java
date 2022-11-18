@@ -1,4 +1,5 @@
-import rest.ReaderApi;
+package view;
+import view.rest.ReaderApi;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;

@@ -1,15 +1,15 @@
 package view.rest;
 
-import view.WebAppSingletons;
+
 import DTO.AllCategoriesDTO;
 import DTO.CategoryDTO;
-
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import view.WebAppSingletons;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

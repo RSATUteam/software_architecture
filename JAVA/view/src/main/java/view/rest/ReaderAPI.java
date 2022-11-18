@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/reader/")
 @Produces({ MediaType.APPLICATION_JSON })
-public class ReaderApi {
+public class ReaderAPI {
     //CategoryDTO fictionCategoryDTO = new CategoryDTO( "1", "Какие-то новости", 10);
     //CategoryDTO fictionCategory2DTO = new CategoryDTO( "2", "Ещё какие-то новости", 5);
     //AllCategoriesDTO allCategoriesDTO = new AllCategoriesDTO(Arrays.asList(fictionCategoryDTO, fictionCategory2DTO));

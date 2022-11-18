@@ -1,5 +1,5 @@
 package view;
-import view.rest.ReaderApi;
+import view.rest.ReaderAPI;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -10,7 +10,7 @@ public class WebAppSingletons extends Application {
     private Set<Object> singletons = new HashSet<Object>();
 
     public WebAppSingletons() {
-        singletons.add(new ReaderApi());
+        singletons.add(new ReaderAPI());
     }
 
     @Override

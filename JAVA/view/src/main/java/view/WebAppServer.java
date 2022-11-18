@@ -17,7 +17,8 @@ public class WebAppServer {
     /**
      * Запускает web-сервер. По окончании работы требуется ручная остановка процесса.
      */
-    private static void startWebServer() {
+    private static void startWebServer()
+    {
         UndertowJaxrsServer server = new UndertowJaxrsServer().start(Undertow.builder().addHttpListener(PORT, "localhost"));
         server.deploy(WebAppSingletons.class);
         System.out.println("Сервер запущен: http://localhost:" + PORT);

@@ -23,7 +23,7 @@ public class ReaderAPI {
     @Path("/category/all")
     public Response getAllCategory() {
         AllCategories allCategories = new AllCategories();
-        return Response.ok().entity(allCategories.getCategories()).build();
+        return getObject(allCategories.getCategories());
     }
 
     @GET
@@ -31,14 +31,14 @@ public class ReaderAPI {
     public Response getOneCategory(@QueryParam("id") String id) {
         CategoryDTO categoryDTO = new CategoryDTO(id);
 
-        return  Response.ok().entity(categoryDTO).build();
+        return getObject(categoryDTO);
     }
 
     @GET
     @Path("/news/all")
     public Response getAllNews(){
         AllNews allNews = new AllNews();
-        return Response.ok().entity(allNews.getNewsDTOList()).build();
+        return getObject(allNews.getNewsDTOList());
     }
 
     Response getObject(ArrayList<Object> obj){

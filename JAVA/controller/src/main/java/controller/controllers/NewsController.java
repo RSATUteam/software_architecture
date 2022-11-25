@@ -5,6 +5,7 @@ import controller.bo.CategoryBO;
 import controller.bo.NewsBO;
 import interfaces.INews;
 
+import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
 public class NewsController implements INews {

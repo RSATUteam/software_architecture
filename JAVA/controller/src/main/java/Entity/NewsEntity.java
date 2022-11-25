@@ -1,9 +1,9 @@
 package Entity;
 
 import controller.bo.content.Content;
+import controller.bo.content.ContentType;
 import controller.bo.content.ImageContent;
 import controller.bo.content.TextContent;
-import controller.bo.content.ContentType;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -25,8 +25,9 @@ public class NewsEntity {
         ));
         static String Title = "Look at this cat";
         static ArrayList<Pair<ContentType, String>> Content = new ArrayList<>(Arrays.asList(
-            new Pair<>(ContentType.Image, "C:\\Users\\term2\\Documents\\baturinIPB20\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.jpg"),
-            new Pair<>(ContentType.Text, "C:\\Users\\term2\\Documents\\baturinIPB20\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt")
+            new Pair<>(ContentType.Image, "resources\\cat-in-basket.jpg"),
+            //new Pair<>(ContentType.Image, ),
+            new Pair<>(ContentType.Text, "C:\\Users\\term1\\Documents\\baturinIPB20\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt")
         ));
         static Date PublicationDate = new Date(122, 10, 25, 5, 0, 2);
     }

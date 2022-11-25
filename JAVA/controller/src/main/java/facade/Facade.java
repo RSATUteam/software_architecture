@@ -59,4 +59,8 @@ public class Facade {
     public static boolean deleteCategory(int id) {
         return categoryController.deleteCategory(id);
     }
+
+    public static ArrayList<Integer> getCategoriesId() {
+        return categoryController.getCategoriesId();
+    }
 }

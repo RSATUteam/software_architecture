@@ -4,6 +4,7 @@ import controller.bo.CategoryBO;
 import interfaces.ICategories;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CategoryController implements ICategories {
     CategoryBO category = null;
@@ -15,7 +16,7 @@ public class CategoryController implements ICategories {
 
     @Override
     public ArrayList<Integer> getCategoriesId() {
-        return null;
+        return new ArrayList<Integer>(Arrays.asList(1, 2)); // test
     }
 
     @Override

@@ -4,7 +4,6 @@ import controller.bo.CategoryBO;
 import facade.Facade;
 
 public class CategoryDTO {
-    Facade facade;
     int id;
     String Name;
     String Description;
@@ -26,7 +25,7 @@ public class CategoryDTO {
     }
 
     public void setCategory(int categoryId) {
-        CategoryBO CBO = (CategoryBO) facade.getCategory(categoryId);
+        CategoryBO CBO = (CategoryBO) Facade.getCategory(categoryId);
         id = CBO.getId();
         Name = CBO.getName();
         Description = CBO.getDescription();

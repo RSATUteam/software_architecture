@@ -1,22 +1,22 @@
 package DTO;
 
-import controller.controllers.CategoryController;
+import facade.Facade;
 
 import java.util.ArrayList;
 
 public class AllCategories {
     ArrayList<CategoryDTO> Categories;
-    CategoryController controller;
 
     public AllCategories() {
         setAllCategories();
     }
 
     void setAllCategories() {
-        setCategories(controller.getCategoriesId());
+        setCategories(Facade.getCategoriesId());
     }
 
     void setCategories(ArrayList<Integer> CategoriesList) {
+        Categories = new ArrayList<>();
         for (Integer cat : CategoriesList) {
             Categories.add(new CategoryDTO(cat));
         }

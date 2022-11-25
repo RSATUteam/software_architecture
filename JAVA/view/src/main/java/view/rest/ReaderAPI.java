@@ -22,7 +22,7 @@ public class ReaderAPI {
     @GET
     @Path("/category/all")
     public Response getAllCategory() {
-        AllCategories allCategories= new AllCategories();
+        AllCategories allCategories = new AllCategories();
         return Response.ok().entity(allCategories.getCategories()).build();
     }
 

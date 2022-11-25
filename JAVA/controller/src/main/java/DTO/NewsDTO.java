@@ -5,12 +5,10 @@ import controller.bo.NewsBO;
 import controller.bo.content.Content;
 import facade.Facade;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class NewsDTO {
-    Facade facade;
     int id;
     String Title;
     ArrayList<CategoryBO> CategoriesBOList;
@@ -38,7 +36,7 @@ public class NewsDTO {
     }
 
     public void setNews(int newsId) {
-        NewsBO NBO = (NewsBO) facade.getNews(newsId);
+        NewsBO NBO = (NewsBO) Facade.getNews(newsId);
         id = NBO.getId();
         Title = NBO.getTitle();
         ContentList = NBO.getContent();
@@ -47,6 +45,6 @@ public class NewsDTO {
         ArrayList<Integer> categoriesIds = NBO.getCategoryEntityId();
         CategoriesBOList = new ArrayList<>();
         for (Integer idx : categoriesIds)
-            CategoriesBOList.add(facade.getCategory(idx));
+            CategoriesBOList.add(Facade.getCategory(idx));
     }
 }

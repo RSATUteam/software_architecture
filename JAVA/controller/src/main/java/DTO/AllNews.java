@@ -11,7 +11,6 @@ enum ForSort {
 
 public class AllNews {
     ArrayList<NewsDTO> newsDTOList;
-    Facade facade;
 
     public AllNews() {
         setAllNews();
@@ -34,7 +33,7 @@ public class AllNews {
     }
 
     void setAllNews() {
-        setNews(facade.getNewsIdList());
+        setNews(Facade.getNewsIdList());
     }
 
     void setNews(ArrayList<Integer> NewsId) {

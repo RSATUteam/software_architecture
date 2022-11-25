@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 
 @Path("/reader/")
 @Produces({ MediaType.APPLICATION_JSON })
@@ -38,5 +39,17 @@ public class ReaderAPI {
     public Response getAllNews(){
         AllNews allNews = new AllNews();
         return Response.ok().entity(allNews.getNewsDTOList()).build();
+    }
+
+    Response getObject(ArrayList<Object> obj){
+        if (obj==null)
+            return Response.ok().entity("NullArray").build();
+        return Response.ok().entity(obj).build();
+    }
+
+    Response getObject(Object obj){
+        if (obj==null)
+            return Response.ok().entity("Null").build();
+        return Response.ok().entity(obj).build();
     }
 }

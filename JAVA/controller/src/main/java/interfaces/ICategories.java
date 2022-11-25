@@ -5,15 +5,15 @@ import controller.bo.CategoryBO;
 import java.util.ArrayList;
 
 public interface ICategories {
-    ArrayList<String> getCategories();
+    ArrayList<CategoryBO> getCategories();
 
     ArrayList<Integer> getCategoriesId();
 
     CategoryBO getCategory(int id);
 
-    void addCategory(String name);
+    void addCategory(String name, String description);
 
-    boolean updateCategory(String name, String newName);
+    boolean updateCategory(int id, String name, String description);
 
-    boolean deleteCategory(String name);
+    boolean deleteCategory(int id);
 }

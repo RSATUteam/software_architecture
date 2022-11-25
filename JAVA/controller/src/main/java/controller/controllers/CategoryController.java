@@ -1,16 +1,15 @@
 package controller.controllers;
 
-import Entity.CategoryEntity;
 import controller.bo.CategoryBO;
 import interfaces.ICategories;
 
 import java.util.ArrayList;
 
 public class CategoryController implements ICategories {
-    CategoryBO category;
+    CategoryBO category = null;
 
     @Override
-    public ArrayList<String> getCategories() {
+    public ArrayList<CategoryBO> getCategories() {
         return null;
     }
 
@@ -21,27 +20,23 @@ public class CategoryController implements ICategories {
 
     @Override
     public CategoryBO getCategory(int id) {
-        CategoryEntity categoryEntity = new CategoryEntity(id); // либо притягиваем из кэша, либо пинаем штуку, которая грузит в кэш
-        category.setId(categoryEntity.getId());
-
-        category.setName(categoryEntity.getName());
-        category.setDescription(categoryEntity.getDescription());
-
+        if(category == null || category.getId() != id)
+            category = new CategoryBO(id);
         return category;
     }
 
     @Override
-    public void addCategory(String name) {
+    public void addCategory(String name, String description) {
 
     }
 
     @Override
-    public boolean updateCategory(String name, String newName) {
+    public boolean updateCategory(int id, String newName, String newDescription) {
         return false;
     }
 
     @Override
-    public boolean deleteCategory(String name) {
+    public boolean deleteCategory(int id) {
         return false;
     }
 }

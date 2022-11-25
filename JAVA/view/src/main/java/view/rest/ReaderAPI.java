@@ -1,7 +1,7 @@
 package view.rest;
 
 import DTO.AllCategories;
-import DTO.Category;
+import DTO.CategoryDTO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -27,8 +27,8 @@ public class ReaderAPI {
     @GET
     @Path("/category")
     public Response getOneCategory(@QueryParam("id") String id) {
-        Category category = new Category(id);
+        CategoryDTO categoryDTO = new CategoryDTO(id);
 
-        return  Response.ok().entity(category).build();
+        return  Response.ok().entity(categoryDTO).build();
     }
 }

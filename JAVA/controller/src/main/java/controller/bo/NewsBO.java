@@ -13,7 +13,7 @@ public class NewsBO {
     ArrayList<Content> ContentList;
     Date PublicationDate;
 
-    NewsBO(int id) {
+    public NewsBO(int id) {
         NewsEntity NE = new NewsEntity(id);
         setId(id);
         setTitle(NE.getTitle());

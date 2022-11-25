@@ -1,7 +1,7 @@
 package view.rest;
 
 import DTO.AllCategories;
-import DTO.Category;
+import DTO.CategoryDTO;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.AfterClass;
@@ -43,7 +43,7 @@ public class ReaderApiTest {
     @Test
     public void readCategory() {
         response  = categoryResource.queryParam("id", "2").request().get();
-        Category categoryDTO = response.readEntity(Category.class);
+        CategoryDTO categoryDTO = response.readEntity(CategoryDTO.class);
         //Assert.assertEquals("2", categoryDTO.id);
     }
 }

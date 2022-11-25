@@ -3,6 +3,7 @@ package DTO;
 import controller.bo.CategoryBO;
 import controller.bo.NewsBO;
 import controller.controllers.NewsController;
+import facade.Facade;
 
 import java.util.ArrayList;
 
@@ -11,8 +12,8 @@ enum ForSort {
 }
 
 public class AllNews {
-    ArrayList<NewsBO> NewsList;
-    NewsController controller;
+    ArrayList<NewsDTO> newsDTOList;
+    Facade facade;
 
     AllNews() {
         setAllNews();
@@ -35,21 +36,20 @@ public class AllNews {
     }
 
     void setAllNews() {
-        setNews(controller.getNewsList());
+        setNews(facade.getNewsIdList());
     }
 
-    void setNews(ArrayList<Integer> NewsI) {
-        NewsList = new ArrayList<>();
-        for (Integer integer : NewsI) {
-            News news = new News(integer);
-            NewsList.add(news.getNews());
+    void setNews(ArrayList<Integer> NewsId) {
+        newsDTOList = new ArrayList<>();
+        for (Integer idx : NewsId) {
+            newsDTOList.add(new NewsDTO(idx));
         }
     }
 
     void Sort(ForSort SortField, boolean forward) {
         switch (SortField) {
             case Title: {
-                NewsList.sort((o1, o2) -> {
+                newsDTOList.sort((o1, o2) -> {
                     if (forward)
                         return o1.getTitle().compareTo(o2.getTitle());
                     return o2.getTitle().compareTo(o1.getTitle());
@@ -57,7 +57,7 @@ public class AllNews {
             }
             break;
             case Date: {
-                NewsList.sort((o1, o2) -> {
+                newsDTOList.sort((o1, o2) -> {
                     if (forward)
                         return o1.getPublicationDate().compareTo(o2.getPublicationDate());
                     return o2.getPublicationDate().compareTo(o1.getPublicationDate());
@@ -68,15 +68,15 @@ public class AllNews {
     }
 
     void Filter(CategoryBO category) {
-        ArrayList<NewsBO> NewNews = new ArrayList<>();
-        for (NewsBO news : NewsList) {
-            for (CategoryBO cat : news.getCategoryBO()) {
+        ArrayList<NewsDTO> NewNews = new ArrayList<>();
+        for (NewsDTO news : newsDTOList) {
+            for (CategoryBO cat : news.getCategoriesBO()) {
                 if (cat.getId() == category.getId()) {
                     NewNews.add(news);
                     break;
                 }
             }
         }
-        NewsList = NewNews;
+        newsDTOList = NewNews;
     }
 }

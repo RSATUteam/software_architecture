@@ -7,14 +7,14 @@ public class CategoryBO {
     String name;
     String description;
 
-    CategoryBO(int id) {
+    public CategoryBO(int id) {
         CategoryEntity CE = new CategoryEntity(id);
         setId(id);
         setName(CE.getName());
         setDescription(CE.getDescription());
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

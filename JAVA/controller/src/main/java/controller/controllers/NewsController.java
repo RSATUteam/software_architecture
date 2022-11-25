@@ -1,52 +1,42 @@
 package controller.controllers;
 
-import Entity.NewsEntity;
-import controller.bo.CategoryBO;
 import controller.bo.NewsBO;
 import interfaces.INews;
 
-import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
 public class NewsController implements INews {
-    NewsBO news;
+    NewsBO news = null;
 
     @Override
-    public ArrayList<Integer> getNewsList() {
+    public ArrayList<NewsBO> getNewsList() {
         return null;
     }
 
     @Override
-    public Object getNews(Integer id) {
-        NewsEntity newsEntity = new NewsEntity(id); // либо притягиваем из кэша, либо пинаем штуку, которая грузит в кэш
-        news.setId(newsEntity.getId());
+    public ArrayList<Integer> getNewsIdList() {
+        return null;
+    }
 
-        // Через контроллер категорий получаем оные по id из ArrayList в newsEntity
-        CategoryController CatController = new CategoryController();
-        ArrayList<CategoryBO> categoryBO = new ArrayList<>();
-        for (Integer categ : newsEntity.getCategoryEntityId()) {
-            categoryBO.add(CatController.getCategory(categ));
-        }
-        news.setCategoryBO(categoryBO);
-
-        news.setTitle(newsEntity.getTitle());
-        news.setContent(newsEntity.getContent());
-        news.setPublicationDate(newsEntity.getPublicationDate());
-
+    @Override
+    public Object getNews(int id) {
+        if(news == null || news.getId() != id)
+            news = new NewsBO(id);
         return news;
     }
 
     @Override
     public void addNews(Object news) {
+
     }
 
     @Override
-    public boolean updateNews(Integer id, Object newNews) {
+    public boolean updateNews(int id, Object newNews) {
         return false;
     }
 
     @Override
-    public boolean deleteNews(Integer id) {
+    public boolean deleteNews(int id) {
         return false;
     }
 }

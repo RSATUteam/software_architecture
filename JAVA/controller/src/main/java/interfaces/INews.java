@@ -1,15 +1,19 @@
 package interfaces;
 
+import controller.bo.NewsBO;
+
 import java.util.ArrayList;
 
 public interface INews {
-    ArrayList<Integer> getNewsList();
+    ArrayList<NewsBO> getNewsList();
 
-    Object getNews(Integer id);
+    Object getNews(int id);
 
     void addNews(Object news);
 
-    boolean updateNews(Integer id, Object newNews);
+    boolean updateNews(int id, Object newNews);
 
-    boolean deleteNews(Integer id);
+    boolean deleteNews(int id);
+
+    ArrayList<Integer> getNewsIdList();
 }

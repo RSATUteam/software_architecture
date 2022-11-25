@@ -21,4 +21,8 @@ public class AllCategories {
             Categories.add(new CategoryDTO(cat));
         }
     }
+
+    public ArrayList<CategoryDTO> getCategories() {
+        return Categories;
+    }
 }

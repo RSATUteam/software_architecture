@@ -1,8 +1,6 @@
 package DTO;
 
 import controller.bo.CategoryBO;
-import controller.bo.NewsBO;
-import controller.controllers.NewsController;
 import facade.Facade;
 
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ public class AllNews {
     ArrayList<NewsDTO> newsDTOList;
     Facade facade;
 
-    AllNews() {
+    public AllNews() {
         setAllNews();
     }
 
@@ -78,5 +76,9 @@ public class AllNews {
             }
         }
         newsDTOList = NewNews;
+    }
+
+    public ArrayList<NewsDTO> getNewsDTOList() {
+        return newsDTOList;
     }
 }

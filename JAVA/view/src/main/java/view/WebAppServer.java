@@ -22,5 +22,7 @@ public class WebAppServer {
         UndertowJaxrsServer server = new UndertowJaxrsServer().start(Undertow.builder().addHttpListener(PORT, "localhost"));
         server.deploy(WebAppSingletons.class);
         System.out.println("Сервер запущен: http://localhost:" + PORT);
+        System.out.println("http://localhost:" + PORT+"/reader/category/all");
+        System.out.println("http://localhost:" + PORT+"/reader/category");
     }
 }

@@ -1,6 +1,7 @@
 package view.rest;
 
 import DTO.AllCategories;
+import DTO.AllNews;
 import DTO.CategoryDTO;
 
 import javax.ws.rs.GET;
@@ -21,7 +22,7 @@ public class ReaderAPI {
     @Path("/category/all")
     public Response getAllCategory() {
         AllCategories allCategories= new AllCategories();
-        return Response.ok().entity(allCategories).build();
+        return Response.ok().entity(allCategories.getCategories()).build();
     }
 
     @GET
@@ -30,5 +31,12 @@ public class ReaderAPI {
         CategoryDTO categoryDTO = new CategoryDTO(id);
 
         return  Response.ok().entity(categoryDTO).build();
+    }
+
+    @GET
+    @Path("/news/all")
+    public Response getAllNews(){
+        AllNews allNews = new AllNews();
+        return Response.ok().entity(allNews.getNewsDTOList()).build();
     }
 }

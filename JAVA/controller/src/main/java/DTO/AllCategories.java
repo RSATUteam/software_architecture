@@ -18,8 +18,8 @@ public class AllCategories {
         setCategories(controller.getCategoriesId());
     }
 
-    void setCategories(ArrayList<Long> CategoriesList) {
-        for (Long cat : CategoriesList) {
+    void setCategories(ArrayList<Integer> CategoriesList) {
+        for (Integer cat : CategoriesList) {
             Category category = new Category(cat);
             Categories.add(category.getCategoryBO());
         }

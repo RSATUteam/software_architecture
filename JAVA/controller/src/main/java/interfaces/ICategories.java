@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public interface ICategories {
     ArrayList<String> getCategories();
 
-    ArrayList<Long> getCategoriesId();
+    ArrayList<Integer> getCategoriesId();
 
-    CategoryBO getCategory(long id);
+    CategoryBO getCategory(int id);
 
     void addCategory(String name);
 

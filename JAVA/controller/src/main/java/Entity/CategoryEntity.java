@@ -1,18 +1,31 @@
 package Entity;
 
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class CategoryEntity {
     long id;
     String name;
     String description;
 
-    public CategoryEntity(long id) {
+    ArrayList<Pair<String, String>> DataCenter = new ArrayList<>(Arrays.asList(
+            new Pair<>("animal pictures", "photos of animals from all over the world"),
+            new Pair<>("funny cats", "photos of cats taken under unusual circumstances")
+    ));
+
+    public CategoryEntity(int id) {
         setId(id);
 
-        String name = "dummy"; // обращение к БД за названием категории
-        setName(name);
-
-        String description = "dummy"; // обращение к БД за описанием категории
-        setDescription(description);
+        // проверка на существование категории с данным id
+        if (id >= DataCenter.size()) {
+            setName("not found");
+            setDescription("not found");
+            return;
+        }
+        setName(DataCenter.get(id).getKey());
+        setDescription(DataCenter.get(id).getValue());
     }
 
     public long getId() {

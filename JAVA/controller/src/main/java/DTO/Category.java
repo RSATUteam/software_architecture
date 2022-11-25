@@ -8,9 +8,9 @@ public class Category {
     CategoryController controller;
 
     public Category(String id) {
-        setCategoryBO(Long.getLong(id));
+        setCategoryBO(Integer.getInteger(id));
     }
-    public Category(Long id) {
+    public Category(Integer id) {
         setCategoryBO(id);
     }
 
@@ -22,7 +22,7 @@ public class Category {
         this.categoryBO = categoryBO;
     }
 
-    public void setCategoryBO(Long categoryBOID) {
+    public void setCategoryBO(Integer categoryBOID) {
         this.categoryBO = controller.getCategory(categoryBOID);
     }
 }

@@ -1,46 +1,96 @@
 package Entity;
 
 import controller.bo.content.Content;
+import controller.bo.content.ImageContent;
+import controller.bo.content.TextContent;
+import controller.bo.content.ContentType;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class NewsEntity {
-    long id;
-    ArrayList<Long> categoryEntity;
+    int id;
+    ArrayList<Integer> categoryEntity;
     String Title;
     ArrayList<Content> Content;
-    Date Create_date;
+    Date PublicationDate;
 
-    public NewsEntity(long id) {
-        setId(id);
-
-        ArrayList<Long> bdCategories = new ArrayList<>(); // обращение к БД за списком категорий
-        setCategoryEntity(bdCategories);
-
-        String Title = "dummy"; // обращение к БД за заголовком новости
-        setTitle(Title);
-
-        ArrayList<Content> Content = new ArrayList<>(); // обращение к БД за наполнением новости
-        setContent(Content);
-
-        Date Create_date = new Date(); // обращение у БД за датой создания новости
-        setCreate_date(Create_date);
+    static class DataCenter {
+        static int id = 0;
+        static ArrayList<Integer> Categories = new ArrayList<>(Arrays.asList(
+                0,
+                1
+        ));
+        static String Title = "Look at this cat";
+        static ArrayList<Pair<ContentType, String>> Content = new ArrayList<>(Arrays.asList(
+            new Pair<>(ContentType.Image, "D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.jpg"),
+            new Pair<>(ContentType.Text, "D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt")
+        ));
+        static Date PublicationDate = new Date(122, 10, 25, 5, 0, 2);
     }
 
-    public long getId() {
+    public NewsEntity(int id) {
+        setId(id);
+
+        // проверка на существование категории с данным id. По-хорошему, DataCenter должен "вернуть" массив новостей
+        if (id != DataCenter.id) {
+            setCategoryEntity(new ArrayList<>());
+            setTitle("not found");
+            setContent(new ArrayList<>());
+            setPublicationDate(new Date());
+            return;
+        }
+
+        // обращение к БД за списком категорий
+        ArrayList<Integer> bdCategories = DataCenter.Categories;
+        setCategoryEntity(bdCategories);
+
+        // обращение к БД за заголовком новости
+        String Title = DataCenter.Title;
+        setTitle(Title);
+
+        // обращение к БД за наполнением новости
+        ArrayList<Pair<ContentType, String>> ContentDescriptors = DataCenter.Content;
+        // загрузка контента
+        ArrayList<Content> Content = new ArrayList<>();
+        for (Pair<ContentType, String> contentDescriptor : ContentDescriptors) {
+            Content cont;
+            switch (contentDescriptor.getKey()) {
+                case Image: {
+                    cont = new ImageContent();
+                    break;
+                }
+                case Text:
+                default: {
+                    cont = new TextContent();
+                    break;
+                }
+            }
+            cont.loadContent(contentDescriptor.getValue());
+            Content.add(cont);
+        }
+        setContent(Content);
+
+        // обращение к БД за датой создания новости
+        Date PublicationDate = DataCenter.PublicationDate;
+        setPublicationDate(PublicationDate);
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public ArrayList<Long> getCategoryEntity() {
+    public ArrayList<Integer> getCategoryEntity() {
         return categoryEntity;
     }
 
-    public void setCategoryEntity(ArrayList<Long> categoryEntity) {
+    public void setCategoryEntity(ArrayList<Integer> categoryEntity) {
         this.categoryEntity = categoryEntity;
     }
 
@@ -60,11 +110,11 @@ public class NewsEntity {
         Content = content;
     }
 
-    public Date getCreate_date() {
-        return Create_date;
+    public Date getPublicationDate() {
+        return PublicationDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        Create_date = create_date;
+    public void setPublicationDate(Date publicationDate) {
+        PublicationDate = publicationDate;
     }
 }

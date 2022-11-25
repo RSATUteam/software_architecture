@@ -15,12 +15,12 @@ public class CategoryController implements ICategories {
     }
 
     @Override
-    public ArrayList<Long> getCategoriesId() {
+    public ArrayList<Integer> getCategoriesId() {
         return null;
     }
 
     @Override
-    public CategoryBO getCategory(long id) {
+    public CategoryBO getCategory(int id) {
         CategoryEntity categoryEntity = new CategoryEntity(id); // либо притягиваем из кэша, либо пинаем штуку, которая грузит в кэш
         category.setId(categoryEntity.getId());
 

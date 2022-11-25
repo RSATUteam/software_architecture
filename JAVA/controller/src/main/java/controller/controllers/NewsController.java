@@ -23,14 +23,14 @@ public class NewsController implements INews {
         // Через контроллер категорий получаем оные по id из ArrayList в newsEntity
         CategoryController CatController = new CategoryController();
         ArrayList<CategoryBO> categoryBO = new ArrayList<>();
-        for (Integer categ : newsEntity.getCategoryEntity()) {
+        for (Integer categ : newsEntity.getCategoryEntityId()) {
             categoryBO.add(CatController.getCategory(categ));
         }
         news.setCategoryBO(categoryBO);
 
         news.setTitle(newsEntity.getTitle());
         news.setContent(newsEntity.getContent());
-        news.setCreate_date(newsEntity.getPublicationDate());
+        news.setPublicationDate(newsEntity.getPublicationDate());
 
         return news;
     }

@@ -25,8 +25,8 @@ public class NewsEntity {
         ));
         static String Title = "Look at this cat";
         static ArrayList<Pair<ContentType, String>> Content = new ArrayList<>(Arrays.asList(
-            new Pair<>(ContentType.Image, "D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.jpg"),
-            new Pair<>(ContentType.Text, "D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt")
+            new Pair<>(ContentType.Image, "C:\\Users\\term2\\Documents\\baturinIPB20\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.jpg"),
+            new Pair<>(ContentType.Text, "C:\\Users\\term2\\Documents\\baturinIPB20\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt")
         ));
         static Date PublicationDate = new Date(122, 10, 25, 5, 0, 2);
     }
@@ -86,7 +86,7 @@ public class NewsEntity {
         this.id = id;
     }
 
-    public ArrayList<Integer> getCategoryEntity() {
+    public ArrayList<Integer> getCategoryEntityId() {
         return categoryEntity;
     }
 

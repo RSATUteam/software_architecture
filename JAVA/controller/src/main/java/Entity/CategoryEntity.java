@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CategoryEntity {
-    long id;
+    int id;
     String name;
     String description;
 
@@ -28,11 +28,11 @@ public class CategoryEntity {
         setDescription(DataCenter.get(id).getValue());
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

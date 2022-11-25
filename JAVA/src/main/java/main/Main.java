@@ -2,8 +2,6 @@ package main;
 
 import Entity.CategoryEntity;
 import Entity.NewsEntity;
-import controller.bo.content.ImageContent;
-import controller.bo.content.TextContent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +38,7 @@ public class Main {
             System.out.println("<<<<<Id: " + news.getId() + ">>>>>");
             System.out.println("Title: " + news.getTitle());
             System.out.println("Date: " + news.getPublicationDate());
-            System.out.println("Category ids: " + news.getCategoryEntity());
+            System.out.println("Category ids: " + news.getCategoryEntityId());
             System.out.println("Content list size: " + news.getContent().size());
         }
     }

@@ -1,15 +1,24 @@
 package controller.bo;
 
+import Entity.CategoryEntity;
+
 public class CategoryBO {
-    long id;
+    int id;
     String name;
     String description;
+
+    CategoryBO(int id) {
+        CategoryEntity CE = new CategoryEntity(id);
+        setId(id);
+        setName(CE.getName());
+        setDescription(CE.getDescription());
+    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

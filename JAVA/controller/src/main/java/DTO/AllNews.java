@@ -59,8 +59,8 @@ public class AllNews {
             case Date: {
                 NewsList.sort((o1, o2) -> {
                     if (forward)
-                        return o1.getCreate_date().compareTo(o2.getCreate_date());
-                    return o2.getCreate_date().compareTo(o1.getCreate_date());
+                        return o1.getPublicationDate().compareTo(o2.getPublicationDate());
+                    return o2.getPublicationDate().compareTo(o1.getPublicationDate());
                 });
             }
             break;

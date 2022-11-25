@@ -1,16 +1,26 @@
 package controller.bo;
 
+import Entity.NewsEntity;
 import controller.bo.content.Content;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class NewsBO {
-    long id;
-    ArrayList<CategoryBO> categoryBO;
+    int id;
+    ArrayList<Integer> categoryEntityId;
     String Title;
-    ArrayList<controller.bo.content.Content> Content;
-    Date Create_date;
+    ArrayList<Content> ContentList;
+    Date PublicationDate;
+
+    NewsBO(int id) {
+        NewsEntity NE = new NewsEntity(id);
+        setId(id);
+        setTitle(NE.getTitle());
+        setPublicationDate(NE.getPublicationDate());
+        setContent(NE.getContent());
+        setCategoryEntityId(NE.getCategoryEntityId());
+    }
 
     public String getTitle() {
         return Title;
@@ -20,35 +30,35 @@ public class NewsBO {
         Title = title;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public ArrayList<CategoryBO> getCategoryBO() {
-        return categoryBO;
+    public ArrayList<Integer> getCategoryEntityId() {
+        return categoryEntityId;
     }
 
-    public void setCategoryBO(ArrayList<CategoryBO> categoryBO) {
-        this.categoryBO = categoryBO;
+    public void setCategoryEntityId(ArrayList<Integer> categoryBO) {
+        this.categoryEntityId = categoryBO;
     }
 
     public ArrayList<controller.bo.content.Content> getContent() {
-        return Content;
+        return ContentList;
     }
 
-    public void setContent(ArrayList<controller.bo.content.Content> content) {
-        Content = content;
+    public void setContent(ArrayList<Content> content) {
+        ContentList = content;
     }
 
-    public Date getCreate_date() {
-        return Create_date;
+    public Date getPublicationDate() {
+        return PublicationDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        Create_date = create_date;
+    public void setPublicationDate(Date date) {
+        PublicationDate = date;
     }
 }

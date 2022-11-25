@@ -1,22 +1,10 @@
 package main;
 
-import Entity.CategoryEntity;
-import Entity.NewsEntity;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
-        /*TextContent a = new TextContent();
-        ImageContent b = new ImageContent();
-        ArrayList<String> lines = (ArrayList<String>) a.getContent("D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.txt");
-        byte[] bytes = (byte[]) b.getContent("D:\\IDE\\JetBrains\\IdeaProjects\\software_architecture\\JAVA\\controller\\src\\main\\resources\\cat-in-basket.jpg");
-        if (!lines.isEmpty())
-            System.out.println("Lines loaded correctly!");
-        if (bytes.length > 0)
-            System.out.println("Picture loaded correctly!");*/
+        System.out.println("Hello world!");
+        /*
         ArrayList<CategoryEntity> categoriesList = new ArrayList<>(Arrays.asList(
                 new CategoryEntity(0),
                 new CategoryEntity(1),
@@ -41,5 +29,6 @@ public class Main {
             System.out.println("Category ids: " + news.getCategoryEntityId());
             System.out.println("Content list size: " + news.getContent().size());
         }
+         */
     }
 }

@@ -1,3 +1,3 @@
-package controller.bo.content;
+package content;
 
 public enum ContentType {Text, Image}
